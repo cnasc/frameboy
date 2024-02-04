@@ -5,6 +5,7 @@ export const vNextSchema = yup.object({
   'fc:frame:image': yup.string().defined(),
   'og:image': yup.string().defined(),
   'fc:frame:button:1': yup.string().optional(),
+  // TODO: yup doesn't infer type well from this concise definition
   ...[2, 3, 4].reduce(
     (acc, index) => ({
       ...acc,
@@ -27,6 +28,7 @@ export const vNextSchema = yup.object({
     }),
     {},
   ),
+  // TODO: yup doesn't infer type well from this concise definition
   ...[1, 2, 3, 4].reduce(
     (acc, index) => ({
       ...acc,

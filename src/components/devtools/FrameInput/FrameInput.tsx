@@ -1,15 +1,21 @@
 'use client';
 import { useCallback, useState } from 'react';
+import { useAtom } from 'jotai';
 import { ValidationError } from 'yup';
+import { frameAtom, frameErrorsAtom } from '../../../store/frameAtom';
 import { FrameVNext, vNextSchema } from '../../../utils/schemaValidation';
 
 export function FrameInput() {
   const [url, setUrl] = useState('');
-  const [errors, setErrors] = useState<string[]>([]);
-  const [result, setResult] = useState<FrameVNext | null>(null);
+  // eslint-disable-next-line @typescript-eslint/naming-convention, @typescript-eslint/no-unused-vars
+  const [_result, setResult] = useAtom(frameAtom);
+  // eslint-disable-next-line @typescript-eslint/naming-convention, @typescript-eslint/no-unused-vars
+  const [_errors, setErrors] = useAtom(frameErrorsAtom);
   const fetchFrame = useCallback(async () => {
     setResult(null);
-    setErrors([]);
+    if (setErrors) {
+      setErrors([]);
+    }
     const response = await fetch('/api/getFrame', {
       body: JSON.stringify({ url }),
       method: 'POST',
@@ -17,45 +23,32 @@ export function FrameInput() {
         contentType: 'application/json',
       },
     });
-    const json = await response.json();
+    // TODO: handle exceptional cases
+    const json = (await response.json()) as { html: string };
     const html = json.html;
+    // eslint-disable-next-line @typescript-eslint/no-use-before-define
     const result = parseHtml(html, setErrors);
     setResult(result);
-  }, [url]);
+  }, [setErrors, setResult, url]);
   return (
-    <>
-      <div className="grid grid-cols-[2fr_1fr] gap-4">
-        <input
-          className="rounded-lg border border-white p-2"
-          type="text"
-          value={url}
-          onChange={(e) => setUrl(e.target.value)}
-        />
-        <button
-          className="rounded-lg border border-white"
-          type="button"
-          onClick={fetchFrame}
-          disabled={url.length < 1}
-        >
-          Fetch
-        </button>
-      </div>
-      <div>
-        {result && (
-          <>
-            <p>LGTM ✅</p>
-            <pre>{JSON.stringify(result, null, 2)}</pre>
-          </>
-        )}
-        {errors.length > 0 && (
-          <ol>
-            {errors.map((e) => (
-              <li key={e}>❌ {e}</li>
-            ))}
-          </ol>
-        )}
-      </div>
-    </>
+    <div className="grid grid-cols-[2fr_1fr] gap-4">
+      <input
+        className="rounded-lg border border-white p-2"
+        type="text"
+        value={url}
+        // eslint-disable-next-line react-perf/jsx-no-new-function-as-prop
+        onChange={(e) => setUrl(e.target.value)}
+      />
+      <button
+        className="rounded-lg border border-white"
+        type="button"
+        // eslint-disable-next-line @typescript-eslint/no-misused-promises
+        onClick={fetchFrame}
+        disabled={url.length < 1}
+      >
+        Fetch
+      </button>
+    </div>
   );
 }
 
