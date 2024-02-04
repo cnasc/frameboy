@@ -8,7 +8,7 @@ const customJestConfig = {
   moduleNameMapper: {
     'rehype-pretty-code': '<rootDir>/node_modules/rehype-pretty-code',
   },
-  roots: ['<rootDir>/src', '<rootDir>/onchainKit'],
+  roots: ['<rootDir>/src'],
   setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
 };
 const asyncConfig = createJestConfig(customJestConfig);
