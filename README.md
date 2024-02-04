@@ -10,7 +10,7 @@ Very much a work in progress, at the moment it can validate the tags sent on an 
 
 - set `NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID` in `.env.local` (not used quite yet, but will break the build if absent)
 - `yarn` then `yarn dev`
-- visit `http://localhost:1337` and input the URL of your frame page. Because it's running locally you can debug the output of a locally running frame.
+- visit `http://localhost:1337/devtools` and input the URL of your frame page. Because it's running locally you can debug the output of a locally running frame.
 
 ## Future direction
 
