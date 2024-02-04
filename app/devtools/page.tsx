@@ -8,7 +8,8 @@ export default function DevTools() {
   return (
     <>
       <Header />
-      <main className="container mx-auto flex flex-col px-8 py-28">
+      <main className="py-88 container flex flex-col gap-4 px-8">
+        <h1 className="text-xl">Wherein we determine if your frame is valid</h1>
         <FrameInput />
         <Link href={FRAME_SPEC_URL}>
           <span className="flex items-center gap-1">

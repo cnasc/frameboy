@@ -48,3 +48,5 @@ export const vNextSchema = yup.object({
       return new Blob([value]).size <= 32;
     }),
 });
+
+export interface FrameVNext extends yup.InferType<typeof vNextSchema> {}
