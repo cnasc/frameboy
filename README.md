@@ -2,7 +2,7 @@
 
 An implementation of Farcaster frames (and devtools for creating them).
 
-![screenshot](documentation-images/Screenshot%202024-02-03%20at%2010.52.08 PM.png)
+![screenshot](documentation-images/devtools.png)
 
 ## Status
 
@@ -14,7 +14,7 @@ Very much a work in progress, at the moment it can validate the tags sent on an 
 
 ## Future direction
 
-- [ ] Render frame
+- [x] Render frame
 - [ ] Sign in With Neynar to send authenticated POSTs to frame for realistic testing
 - [ ] Build out the full Frameboy app
 
