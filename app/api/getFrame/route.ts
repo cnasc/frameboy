@@ -5,7 +5,6 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
   try {
     const response = await fetch(data.url);
     const text = await response.text();
-    console.log(text);
     return NextResponse.json({ html: text }, { status: 200 });
   } catch (error) {
     console.error('Error fetching frame:', error);
