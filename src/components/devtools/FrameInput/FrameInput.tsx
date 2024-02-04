@@ -5,8 +5,11 @@ import { FrameVNext, vNextSchema } from '../../../utils/schemaValidation';
 
 export function FrameInput() {
   const [url, setUrl] = useState('');
+  const [errors, setErrors] = useState<string[]>([]);
   const [result, setResult] = useState<FrameVNext | null>(null);
   const fetchFrame = useCallback(async () => {
+    setResult(null);
+    setErrors([]);
     const response = await fetch('/api/getFrame', {
       body: JSON.stringify({ url }),
       method: 'POST',
@@ -16,7 +19,7 @@ export function FrameInput() {
     });
     const json = await response.json();
     const html = json.html;
-    const result = parseHtml(html);
+    const result = parseHtml(html, setErrors);
     setResult(result);
   }, [url]);
   return (
@@ -43,6 +46,13 @@ export function FrameInput() {
             <p>LGTM ✅</p>
             <pre>{JSON.stringify(result, null, 2)}</pre>
           </>
+        )}
+        {errors.length > 0 && (
+          <ol>
+            {errors.map((e) => (
+              <li key={e}>❌ {e}</li>
+            ))}
+          </ol>
         )}
       </div>
     </>
