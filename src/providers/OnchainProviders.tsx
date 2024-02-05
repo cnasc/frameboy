@@ -15,8 +15,8 @@ import {
   trustWallet,
 } from '@rainbow-me/rainbowkit/wallets';
 import { configureChains, createConfig, WagmiConfig } from 'wagmi';
+import { mainnet } from 'wagmi/chains';
 import { publicProvider } from 'wagmi/providers/public';
-import { getChainsForEnvironment } from '../store/supportedChains';
 
 type Props = { children: ReactNode };
 
@@ -28,12 +28,7 @@ if (!projectId) {
   throw new Error(providerErrMessage);
 }
 
-// TODO Docs ~~~
-const supportedChains = getChainsForEnvironment();
-if (!supportedChains) {
-  throw new Error('Must configure supported chains in store/supportedChains');
-}
-const { chains, publicClient } = configureChains(supportedChains, [publicProvider()]);
+const { chains, publicClient } = configureChains([mainnet], [publicProvider()]);
 
 const connectors = connectorsForWallets([
   {
