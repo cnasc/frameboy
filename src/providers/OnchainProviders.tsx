@@ -17,6 +17,7 @@ import {
 import { configureChains, createConfig, WagmiConfig } from 'wagmi';
 import { mainnet } from 'wagmi/chains';
 import { publicProvider } from 'wagmi/providers/public';
+import { APP_NAME } from '../constants';
 
 type Props = { children: ReactNode };
 
@@ -33,7 +34,7 @@ const { chains, publicClient } = configureChains([mainnet], [publicProvider()]);
 const connectors = connectorsForWallets([
   {
     groupName: 'Recommended',
-    wallets: [coinbaseWallet({ appName: 'buildonchainapps', chains })],
+    wallets: [coinbaseWallet({ appName: APP_NAME, chains })],
   },
   {
     groupName: 'Other Wallets',
