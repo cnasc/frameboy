@@ -16,6 +16,8 @@ Very much a work in progress, at the moment it can validate the tags sent on an 
 
 - [x] Render frame
 - [ ] Sign in With Neynar to send authenticated POSTs to frame for realistic testing
+  - [x] Sign in With Neynar
+  - [ ] Send authenticated POSTs
 - [ ] Build out the full Frameboy app
 
 ## Acknowledgements
