@@ -3,6 +3,7 @@ import { FrameVNext } from '../../../utils/schemaValidation';
 
 type FrameProps = {
   frameDefinition: FrameVNext;
+  signerUuid: string | null;
 };
 
 export function Frame({ frameDefinition }: FrameProps) {

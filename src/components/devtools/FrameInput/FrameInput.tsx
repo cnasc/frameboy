@@ -2,7 +2,7 @@
 import { useCallback, useState } from 'react';
 import { useAtom } from 'jotai';
 import { ValidationError } from 'yup';
-import { frameAtom, frameErrorsAtom } from '../../../store/frameAtom';
+import { frameAtom, frameErrorsAtom } from '../../../store/atoms';
 import { FrameVNext, vNextSchema } from '../../../utils/schemaValidation';
 
 export function FrameInput() {

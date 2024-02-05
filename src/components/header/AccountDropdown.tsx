@@ -3,8 +3,10 @@ import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 import { ExitIcon, IdCardIcon } from '@radix-ui/react-icons';
 import { clsx } from 'clsx';
 import { useAccount, useDisconnect } from 'wagmi';
+import { useSignInWithNeynar } from '../../hooks/useSignInWithNeynar';
 
 export function AccountDropdown() {
+  useSignInWithNeynar();
   const { address } = useAccount();
   const { disconnect } = useDisconnect();
   const handleDisconnectWallet = useCallback(() => {
@@ -37,9 +39,6 @@ export function AccountDropdown() {
                 <div className="font-inter w-32 overflow-hidden text-ellipsis text-base font-medium text-white">
                   {address}
                 </div>
-              </div>
-              <div className="inline-flex items-center justify-start gap-8">
-                <div className="flex items-center justify-start gap-1">TODO</div>
               </div>
             </div>
           </div>
