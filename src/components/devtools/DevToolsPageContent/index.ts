@@ -1,0 +1,1 @@
+export { DevToolsPageContent } from './DevToolsPageContent';

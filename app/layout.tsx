@@ -25,10 +25,8 @@ export const viewport = {
 };
 
 export const metadata: Metadata = {
+  title: 'frameboy',
   manifest: '/manifest.json',
-  other: {
-    boat: '0.17.0',
-  },
 };
 
 // Stat analytics before the App renders,

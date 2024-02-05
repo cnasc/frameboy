@@ -1,6 +1,6 @@
 {
-  "name": "Build Onchain Apps",
-  "short_name": "Onchain App",
+  "name": "frameboy",
+  "short_name": "frmb",
   "icons": [
     {
       "src": "/icons/icon-512x512.png",

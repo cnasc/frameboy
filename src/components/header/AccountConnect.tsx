@@ -11,7 +11,7 @@ import { AccountDropdown } from './AccountDropdown';
 function AccountConnect() {
   return (
     <ConnectButton.Custom>
-      {({ account, chain, openChainModal, openConnectModal, authenticationStatus, mounted }) => {
+      {({ account, chain, openConnectModal, authenticationStatus, mounted }) => {
         const ready = mounted && authenticationStatus !== 'loading';
         const connected =
           ready &&
@@ -44,15 +44,6 @@ function AccountConnect() {
                   </button>
                 );
               }
-
-              if (chain.unsupported) {
-                return (
-                  <button onClick={openChainModal} type="button">
-                    Wrong network
-                  </button>
-                );
-              }
-
               return <AccountDropdown />;
             })()}
           </div>

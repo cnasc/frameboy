@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
-import { ExitIcon } from '@radix-ui/react-icons';
+import { ExitIcon, IdCardIcon } from '@radix-ui/react-icons';
 import { clsx } from 'clsx';
 import { useAccount, useDisconnect } from 'wagmi';
 
@@ -16,7 +16,9 @@ export function AccountDropdown() {
       <DropdownMenu.Trigger asChild>
         <div className="flex h-8 w-8 items-center justify-center">
           <button type="button" aria-label="Disconnect">
-            TODO
+            <div className="flex size-8 items-center justify-center rounded-full bg-purple-700">
+              <IdCardIcon fill="black" />
+            </div>
           </button>
         </div>
       </DropdownMenu.Trigger>
@@ -32,7 +34,9 @@ export function AccountDropdown() {
           <div className="inline-flex items-center justify-start gap-2">
             <div className="inline-flex flex-col items-start justify-center gap-1">
               <div className="inline-flex items-center justify-start gap-1">
-                <div className="font-inter w-32 text-base font-medium text-white">{address}</div>
+                <div className="font-inter w-32 overflow-hidden text-ellipsis text-base font-medium text-white">
+                  {address}
+                </div>
               </div>
               <div className="inline-flex items-center justify-start gap-8">
                 <div className="flex items-center justify-start gap-1">TODO</div>
