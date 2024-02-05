@@ -3,3 +3,4 @@ import { FrameVNext } from '../utils/schemaValidation';
 
 export const frameAtom = atom<FrameVNext | null>(null);
 export const frameErrorsAtom = atom<string[]>([]);
+export const neynarSignerAtom = atom<string | null>(null);
